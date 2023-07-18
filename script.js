@@ -39,7 +39,7 @@ function getGrade() {
 
 function toCelsius() {
   let fahrenheit = document.getElementById("Fahrenheit").value;
-  let celsius = (5 / 9) * (fahrenheit - 32);
+  let celsius = ((5 / 9) * (fahrenheit - 32)).toFixed(2);
 
   document.getElementById("celsiusText").innerHTML =
     fahrenheit + "°F is " + celsius + "°C";
@@ -49,7 +49,7 @@ function toCelsius() {
 
 function toFahrenheit() {
   let celsius = document.getElementById("Celsius").value;
-  let fahrenheit = (celsius * 9) / 5 + 32;
+  let fahrenheit = ((celsius * 9) / 5 + 32).toFixed(2);
 
   document.getElementById("fahrenheitText").innerHTML =
     celsius + "°C is " + fahrenheit + "°F";
