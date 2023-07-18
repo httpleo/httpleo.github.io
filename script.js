@@ -30,7 +30,7 @@ function getGrade() {
       throw "it can't be a negative number";
     }
   } catch (error) {
-    message.innerHTML = "Please try again with a valid imput";
+    message.innerHTML = "Please try again with a valid input";
     alert("Invalid input: " + error);
   }
 }
@@ -39,7 +39,7 @@ function getGrade() {
 
 function toCelsius() {
   let fahrenheit = document.getElementById("Fahrenheit").value;
-  let celsius = ((5 / 9) * (fahrenheit - 32)).toFixed(2);
+  let celsius = ((5 / 9) * (fahrenheit - 32)).toFixed(4);
 
   document.getElementById("celsiusText").innerHTML =
     fahrenheit + "°F is " + celsius + "°C";
@@ -49,7 +49,7 @@ function toCelsius() {
 
 function toFahrenheit() {
   let celsius = document.getElementById("Celsius").value;
-  let fahrenheit = ((celsius * 9) / 5 + 32).toFixed(2);
+  let fahrenheit = ((celsius * 9) / 5 + 32).toFixed(4);
 
   document.getElementById("fahrenheitText").innerHTML =
     celsius + "°C is " + fahrenheit + "°F";
