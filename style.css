@@ -151,6 +151,14 @@ section p {
   }
 }
 
+@media (max-width: 50em) {
+  .nav-wraper,
+  .nav-list {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
 #image-cropper {
   display: grid;
   place-items: center;
