@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leonardo Moncada | Front End Developer</title>
+    <script src="staff.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="/assests/leo-icon.jfif" />
+  </head>
+  <body>
+    <header id="header">
+      <div class="container">
+        <div class="nav-wraper">
+          <a href="#"
+            ><img
+              src="assests/leo-icon.jfif"
+              alt="My Emoji"
+              width="50px"
+              height="50px"
+          /></a>
+          <nav>
+            <ul class="nav-list">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="grades.html">Grades</a></li>
+              <li><a href="staff.html">Staff</a></li>
+              <li><a href="temperature.html">Temperature</a></li>
+            </ul>
+          </nav>
+          <button>Contact</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        <h1>Sorting the Staff</h1>
+        <button class="separation" onclick="sortName()">Sort Name</button>
+        <button class="separation" onclick="sortSalary()">Sort Salary</button>
+
+        <table id="staffTable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Job Title</th>
+              <th>Location</th>
+              <th>ID</th>
+              <th>Join Date</th>
+              <th>Salary</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </main>
+
+    <footer id="footer">
+      <div class="container">
+        <div class="nav-wraper">
+          <nav>
+            <p>
+              Copyright &copy;
+              <script>
+                document.write(new Date().getFullYear());
+              </script>
+              Leonardo Moncada All Rights Reserved
+            </p>
+          </nav>
+          <a href="#" target="_blank"
+            ><img src="assests/github25x25.svg" alt="github icon"
+          /></a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
