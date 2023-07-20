@@ -7,6 +7,8 @@
 
 //MARK TO GRADE CONVERTER
 
+//function to convert the mark to a grade
+
 function getGrade() {
   const message = document.getElementById("gradeResult");
   //   message.innerHTML = "";
@@ -30,16 +32,17 @@ function getGrade() {
       throw "it can't be a negative number";
     }
   } catch (error) {
-    message.innerHTML = "Please try again with a valid input";
+    message.innerHTML = "Please try again with a valid imput";
     alert("Invalid input: " + error);
   }
 }
 
 //TEMPERATURE CONVERTER
 
+//Function to convert from Fahrenheit to Celsius
 function toCelsius() {
   let fahrenheit = document.getElementById("Fahrenheit").value;
-  let celsius = ((5 / 9) * (fahrenheit - 32)).toFixed(4);
+  let celsius = ((5 / 9) * (fahrenheit - 32)).toFixed(2);
 
   document.getElementById("celsiusText").innerHTML =
     fahrenheit + "°F is " + celsius + "°C";
@@ -47,27 +50,31 @@ function toCelsius() {
   console.log(fahrenheit + "°F is " + celsius + "°C");
 }
 
-function toFahrenheit() {
-  let celsius = document.getElementById("Celsius").value;
-  let fahrenheit = ((celsius * 9) / 5 + 32).toFixed(4);
+//Function to convert from Celsius to Kelvin
+function toKelvin() {
+  let celsius = parseInt(document.getElementById("Celsius").value);
+  let kelvin = celsius + 273.15;
 
-  document.getElementById("fahrenheitText").innerHTML =
-    celsius + "°C is " + fahrenheit + "°F";
+  document.getElementById("kelvinText").innerHTML =
+    celsius + "°C is " + kelvin + "°K";
 
-  console.log(celsius + "°C is " + fahrenheit + "°F");
+  console.log(celsius + "°C is " + kelvin + "°K");
 }
 
+//Function to toggle the sections
 function toggleSection(scale) {
   const sections = document.querySelectorAll(".section");
+  // Iterate through each section
   sections.forEach((section) => {
     if (section.getAttribute("scale") === scale) {
-      section.style.display = "block";
+      section.style.display = "block"; // Display the section
     } else {
-      section.style.display = "none";
+      section.style.display = "none"; // Hide the section
     }
   });
 }
 
+//event listener for Enter key on fahrenheit input
 var input = document.getElementById("Fahrenheit");
 input.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
@@ -76,10 +83,11 @@ input.addEventListener("keypress", function (event) {
   }
 });
 
+//event listener for Enter key on celsius input
 var input = document.getElementById("Celsius");
 input.addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
     event.preventDefault();
-    document.getElementById("toF").click();
+    document.getElementById("toK").click();
   }
 });

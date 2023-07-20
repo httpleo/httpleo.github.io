@@ -7,6 +7,8 @@
 
 //STAFF SORTER
 
+//Dataset containing the staff information
+
 var dataSet = [
   [
     "Brielle Williamson",
@@ -259,6 +261,7 @@ var dataSet = [
 var table = document.getElementById("staffTable");
 var tbody = table.querySelector("tbody"); // Select the tbody element
 
+// Loop through the array of objects to populate the table
 dataSet.forEach(function (rowData) {
   var row = document.createElement("tr");
 
@@ -271,52 +274,49 @@ dataSet.forEach(function (rowData) {
   tbody.appendChild(row); // Append rows to the tbody
 });
 
-//Sort by Name function
+// jQuery sort table data:
+$(document).ready(function () {
+  // sort table data:
+  $(document).on("click", "table thead tr th:not(.no-sort)", function () {
+    var table = $(this).parents("table");
+    var rows = $(this)
+      .parents("table")
+      .find("tbody tr")
+      .toArray()
+      .sort(TableComparer($(this).index()));
+    var dir = $(this).hasClass("sort-asc") ? "desc" : "asc";
 
-function sortName() {
-  var table, rows, switching, i, x, y, shouldSwitch;
-  table = document.getElementById("staffTable");
-  switching = true;
-  while (switching) {
-    switching = false;
-    rows = table.rows;
-    for (i = 1; i < rows.length - 1; i++) {
-      shouldSwitch = false;
-      x = rows[i].getElementsByTagName("td")[0];
-      y = rows[i + 1].getElementsByTagName("td")[0];
-      if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-        shouldSwitch = true;
-        break;
-      }
+    if (dir == "desc") {
+      rows = rows.reverse();
     }
-    if (shouldSwitch) {
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
+
+    for (var i = 0; i < rows.length; i++) {
+      table.append(rows[i]);
     }
-  }
+
+    table.find("thead tr th").removeClass("sort-asc").removeClass("sort-desc");
+    $(this)
+      .removeClass("sort-asc")
+      .removeClass("sort-desc")
+      .addClass("sort-" + dir);
+  });
+});
+
+// table data comparison:
+function TableComparer(index) {
+  return function (a, b) {
+    var val_a = TableCellValue(a, index);
+    var val_b = TableCellValue(b, index);
+    var result =
+      $.isNumeric(val_a) && $.isNumeric(val_b)
+        ? val_a - val_b
+        : val_a.toString().localeCompare(val_b);
+
+    return result;
+  };
 }
 
-//Sort by Salary function
-function sortSalary() {
-  var rows, switching, i, x, y, shouldSwitch;
-  switching = true;
-  while (switching) {
-    switching = false;
-    rows = tbody.rows;
-    for (i = 0; i < rows.length - 1; i++) {
-      shouldSwitch = false;
-      x = rows[i].getElementsByTagName("td")[5];
-      y = rows[i + 1].getElementsByTagName("td")[5];
-      var salaryX = parseFloat(x.textContent.replace(/[$,]/g, ""));
-      var salaryY = parseFloat(y.textContent.replace(/[$,]/g, ""));
-      if (salaryX > salaryY) {
-        shouldSwitch = true;
-        break;
-      }
-    }
-    if (shouldSwitch) {
-      rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-      switching = true;
-    }
-  }
+// get table cell value:
+function TableCellValue(row, index) {
+  return $(row).children("td").eq(index).text();
 }

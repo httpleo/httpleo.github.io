@@ -66,6 +66,19 @@ table {
   border: 1px solid #0053d0;
 }
 
+table thead tr th:after {
+  position: absolute;
+  right: 10px;
+}
+
+table thead tr th.sort-asc:after {
+  content: "\25b4";
+}
+
+table thead tr th.sort-desc:after {
+  content: "\25be";
+}
+
 th,
 td {
   text-align: left;
@@ -93,7 +106,6 @@ input {
 }
 
 input:focus {
-  border: 1px solid #ffc400c0;
   background-color: #0053d04d;
   color: black;
 }
@@ -157,6 +169,10 @@ section p {
     flex-direction: column;
     text-align: center;
   }
+}
+
+textarea {
+  resize: none;
 }
 
 #image-cropper {
